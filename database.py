@@ -13,7 +13,7 @@ def get_post(connection: Connection) -> Posts:
             FROM posts;
             """
         )
-        return [Post.model_validate(dict(post)) for post in cur]
+        return Posts(posts=[Post.model_validate(dict(post)) for post in cur])
 
 
 def insert_post(connection: Connection, post: Post):
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     #     "user_id": 10,
     # }
 
-    # pydantic model tpye post
+    # pydantic model type post
     test_post = Post(
         post_title="Pyantic post", post_text="Checking the type", user_id=10
     )
