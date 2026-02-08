@@ -1,13 +1,13 @@
 from pydantic import BaseModel
 
 
-class post(BaseModel):
+class Post(BaseModel):
 
     post_title: str
     post_text: str
     user_id: int
 
 
-class posts(BaseModel):
+class Posts(BaseModel):
 
-    posts: list[post]
+    posts: list[Post]
