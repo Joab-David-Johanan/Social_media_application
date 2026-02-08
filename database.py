@@ -1,5 +1,19 @@
 import sqlite3
 from sqlite3 import Connection
+from typing import List
+
+
+def get_post(connection: Connection) -> List[tuple]:
+
+    with connection:
+        cur = connection.cursor()
+        cur = cur.execute(
+            """
+            SELECT post_title, post_text, user_id
+            FROM posts;
+            """
+        )
+        return cur.fetchall()
 
 
 def insert_post(connection: Connection, post: dict):
@@ -23,9 +37,10 @@ if __name__ == "__main__":
 
     # dictionary of test post
     test_post = {
-        "post_title": "Third post",
-        "post_text": "this is a Third post",
-        "user_id": 2,
+        "post_title": "Fourth post",
+        "post_text": "this is the fourth post",
+        "user_id": 4,
     }
 
     insert_post(connection=connection, post=test_post)
+    print(get_post(connection=connection))
