@@ -33,7 +33,12 @@ def insert_post(connection: Connection, post: Post):
 
 if __name__ == "__main__":
 
+    # 1st way to connect to db
     connection = sqlite3.connect("social.db")
+    # 2nd way to connect to db
+    # connection = Connection("social.db")
+
+    # when you want the output as dictionary
     connection.row_factory = sqlite3.Row
 
     # dictionary of test post
@@ -45,7 +50,7 @@ if __name__ == "__main__":
 
     # pydantic model type post
     test_post = Post(
-        post_title="Pyantic post", post_text="Checking the type", user_id=10
+        post_title="Connection post", post_text="Checking the connection", user_id=500
     )
 
     insert_post(connection=connection, post=test_post)
