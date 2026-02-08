@@ -1,9 +1,9 @@
 import sqlite3
 from sqlite3 import Connection
-from typing import List
+from models import post, posts
 
 
-def get_post(connection: Connection) -> List[tuple]:
+def get_post(connection: Connection) -> list[dict]:
 
     with connection:
         cur = connection.cursor()
