@@ -2,11 +2,9 @@ import sqlite3
 from sqlite3 import Connection
 
 
-# done inside context manager
-# so we do not have to worry about closing the db and cleaning it up
-
-
 def insert_post(connection: Connection, post: dict):
+    # we do this inside context manager
+    # so we do not have to worry about closing the db and cleaning it up
     with connection:
         cur = connection.cursor()
         cur.execute(
