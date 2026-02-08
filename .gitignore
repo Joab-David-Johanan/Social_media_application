@@ -4,6 +4,10 @@
 # git
 .git
 
+# databases
+*.db
+*.sqlite3
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
