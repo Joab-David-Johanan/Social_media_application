@@ -34,7 +34,7 @@ def insert_post(connection: Connection, post: dict):
 if __name__ == "__main__":
 
     connection = sqlite3.connect("social.db")
-
+    connection.row_factory = sqlite3.Row
     # dictionary of test post
     test_post = {
         "post_title": "Fourth post",
@@ -43,4 +43,5 @@ if __name__ == "__main__":
     }
 
     insert_post(connection=connection, post=test_post)
-    print(get_post(connection=connection))
+    for post in get_post(connection):
+        print(dict(post))
